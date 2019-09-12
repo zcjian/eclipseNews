@@ -1,0 +1,18 @@
+1:所有资源都用
+   ${pageContext.request.contextPath} 根据工程路径后+资源路径
+   
+   比如  header.jsp  引入 image/a.jpg 
+   header.jsp-->  <img src="${pageContext.request.contextPath}/image/a.jpg"/>
+   
+   
+  或者 ：
+    <%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()
+                    +":"+request.getServerPort()+path+"/";
+     %>
+    <base href="<%=basePath%>"/>  设置基本路径
+     <img src="image/a.jpg"/>
+     那么这个图片真实的引入路径会变成： <img src="访问工程的路径/image/a.jpg"/>
+     
+      
